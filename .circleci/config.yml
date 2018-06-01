@@ -20,9 +20,8 @@ defaults: &defaults
       - run:
           name: Execute dockerized example
           command: |
-            cd 01-Login
-            sh exec.sh
-          background: true
+            docker build -t $CIRCLE_JOB ./$SAMPLE_PATH
+            docker run -d -p 3000:3000 --name $CIRCLE_SHA1 -e AUTH0_DOMAIN=$AUTH0_TEST_DOMAIN -e AUTH0_AUDIENCE=$AUTH0_TEST_API_IDENTIFIER $CIRCLE_JOB
           
       #      docker build -t $CIRCLE_JOB ./$SAMPLE_PATH
       #      docker run -d -p 3000:3000 --name $CIRCLE_SHA1 -e AUTH0_DOMAIN=$AUTH0_TEST_DOMAIN -e AUTH0_AUDIENCE=$AUTH0_TEST_API_IDENTIFIER $CIRCLE_JOB
