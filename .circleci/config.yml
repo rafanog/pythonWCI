@@ -25,7 +25,7 @@ defaults: &defaults
           name: Wait for app to be available
           command: |
                 sleep 10
-                docker run --network host --rm appropriate/cul --retry 8 --retry-conffrefused -v localhost:3000
+                docker run --network host --rm appropriate/curl --retry 8 --retry-conffrefused -v localhost:3000
       #      docker build -t $CIRCLE_JOB ./$SAMPLE_PATH
       #      docker run -d -p 3000:3000 --name $CIRCLE_SHA1 -e AUTH0_DOMAIN=$AUTH0_TEST_DOMAIN -e AUTH0_AUDIENCE=$AUTH0_TEST_API_IDENTIFIER $CIRCLE_JOB
       #- run:
