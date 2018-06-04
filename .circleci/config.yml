@@ -21,7 +21,11 @@ defaults: &defaults
           command: |
             docker build -t $CIRCLE_JOB ./$SAMPLE_PATH
             docker run -d -p 3000:3000 --name $CIRCLE_SHA1 -e AUTH0_DOMAIN=$AUTH0_TEST_DOMAIN -e AUTH0_AUDIENCE=$AUTH0_TEST_API_IDENTIFIER $CIRCLE_JOB
-            
+      - run:
+          name: Wait for app to be available
+          command: |
+                sleep 10
+                docker run --network host --rm appropriate/cul --retry 8 --retry-conffrefused -v localhost:3000
       #      docker build -t $CIRCLE_JOB ./$SAMPLE_PATH
       #      docker run -d -p 3000:3000 --name $CIRCLE_SHA1 -e AUTH0_DOMAIN=$AUTH0_TEST_DOMAIN -e AUTH0_AUDIENCE=$AUTH0_TEST_API_IDENTIFIER $CIRCLE_JOB
       #- run:
@@ -39,13 +43,13 @@ defaults: &defaults
       #    working_directory: scripts
       #- run:
       #    name: Copy app container logs
-          command: |
-            mkdir -p /tmp/out
-            docker logs $CIRCLE_SHA1 > /tmp/out/app_logs.log
-            docker cp tester:/tests/out /tmp/
-          when: on_fail
-      - store_artifacts:
-          path: /tmp/out
+      #    command: |
+      #      mkdir -p /tmp/out
+      #      docker logs $CIRCLE_SHA1 > /tmp/out/app_logs.log
+      #      docker cp tester:/tests/out /tmp/
+      #    when: on_fail
+      #- store_artifacts:
+      #    path: /tmp/out
 
 # Jobs and Workflows
 version: 2
