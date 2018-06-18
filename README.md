@@ -1,4 +1,5 @@
 # Auth0 Python Web App
+
 This sample demonstrates how to add authentication to a Python web app using Auth0.
 
 ## What is Auth0?
