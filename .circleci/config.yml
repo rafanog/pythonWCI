@@ -16,6 +16,7 @@ defaults: &defaults
             echo "AUTH0_CLIENT_SECRET=ZzyQODruYHhIqQ8nGQxSYsdlWC80eHFCW8HZrYcabsldVs2Z_Ehf1C_clZ0oqKZA" >> .env
             echo "AUTH0_CALLBACK_URL=http://localhost:3000/callback" >> .env
             echo "AUTH0_AUDIENCE=" >> .env
+            
       - run:
           name: Execute dockerized example
           command: |
