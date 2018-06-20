@@ -34,15 +34,15 @@ defaults: &defaults
             docker cp $(pwd)/codecept.conf.js tester:/tests/codecept.conf.js
             docker start -i tester
           working_directory: scripts
-      #- run:
-      #    name: Copy app container logs
-      #    command: |
-      #      mkdir -p /tmp/out
-      #      docker logs $CIRCLE_SHA1 > /tmp/out/app_logs.log
-      #      docker cp tester:/tests/out /tmp/
-      #    when: on_fail
-      #- store_artifacts:
-      #    path: /tmp/out
+      - run:
+          name: Copy app container logs
+          command: |
+            mkdir -p /tmp/out
+            docker logs $CIRCLE_SHA1 > /tmp/out/app_logs.log
+            docker cp tester:/tests/out /tmp/
+          when: on_fail
+      - store_artifacts:
+          path: /tmp/out
 
 # Jobs and Workflows
 version: 2
