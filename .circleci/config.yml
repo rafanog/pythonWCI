@@ -11,11 +11,11 @@ defaults: &defaults
       - run:
           name: Creating environment variables
           command: |         
-            echo "AUTH0_CLIENT_ID=$AUTH0_TEST_CLIENT_ID" >> $AUTH0_CFG
-            echo "AUTH0_DOMAIN=$AUTH0_TEST_DOMAIN">> $AUTH0_CFG
-            echo "AUTH0_CLIENT_SECRET=$AUTH0_TEST_CLIENT_SECRET">> $AUTH0_CFG
-            echo "AUTH0_CALLBACK_URL=http://localhost:3000/callback">> $AUTH0_CFG
-            echo "AUTH0_AUDIENCE=$AUTH0_TEST_API_IDENTIFIER">> $AUTH0_CFG
+            echo "AUTH0_CLIENT_ID=tiPHSujVyAYdx1C0WTXPtuFFtYJ4yFHz" >> .env
+            echo "AUTH0_DOMAIN=rntest0116.auth0.com" >> .env
+            echo "AUTH0_CLIENT_SECRET=ZzyQODruYHhIqQ8nGQxSYsdlWC80eHFCW8HZrYcabsldVs2Z_Ehf1C_clZ0oqKZA" >> .env
+            echo "AUTH0_CALLBACK_URL=http://localhost:3000/callback" >> .env
+            echo "AUTH0_AUDIENCE=" >> .env
       - run:
           name: Execute dockerized example
           command: |
