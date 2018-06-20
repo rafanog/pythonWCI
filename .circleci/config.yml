@@ -70,8 +70,8 @@ workflows:
   quickstarts_login:
     jobs:
       - checkout:
-          context: Quickstart SPA Test
+          context: Quickstart Webapp Test
       - 01-login:
-          context: Quickstart SPA Test
+          context: Quickstart Webapp Test
           requires:
             - checkout
